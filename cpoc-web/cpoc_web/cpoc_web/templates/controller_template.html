@@ -1,0 +1,21 @@
+{% block content %}
+
+<h2>Celery Proof of Concept Controller</h2>
+
+<form style="float:left; width:50%;" action="/tasks/task_a/?name=TaskAButton" method="get">
+    <button type="submit">A Button</button>
+</form>
+
+<form action="" method="get">
+    <button type="submit">B Button</button>
+</form>
+
+<form style="float:left; width:50%;" action="" method="get">
+    <button type="submit">A` Button</button>
+</form>
+
+<form action="" method="get">
+    <button type="submit">B` Button</button>
+</form>
+
+{% endblock %}
