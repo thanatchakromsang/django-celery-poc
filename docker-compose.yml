@@ -1,0 +1,17 @@
+version: '3.4'
+services:
+  web:
+    build:
+      context: cpoc-web/
+      dockerfile: Dockerfile
+    ports:
+    - "8000:8000"
+    links:
+      - db
+    volumes:
+      - ./cpoc-web:/app
+    command: bash -c "chmod +x entrypoint.sh && ./entrypoint.sh"
+  db:
+    image: postgres
+
+
