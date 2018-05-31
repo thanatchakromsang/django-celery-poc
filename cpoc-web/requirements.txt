@@ -1,5 +1,5 @@
 Django==2.0
-djangorestframework==3.6.3
+djangorestframework==3.8
 django-filter==1.0.4
 Pillow==4.2.0
 requests==2.18.1
