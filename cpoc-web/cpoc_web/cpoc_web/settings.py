@@ -55,9 +55,7 @@ ROOT_URLCONF = 'cpoc_web.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [
-            os.path.join(BASE_DIR, 'cpoc_web/templates')
-        ],
+        'DIRS': [os.path.join(BASE_DIR, 'cpoc_web/templates')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -125,3 +123,5 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = '/static/'
+
+CELERY_BROKER_URL = 'redis://redis:6379/0'

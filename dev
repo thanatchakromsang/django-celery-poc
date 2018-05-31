@@ -1,0 +1,17 @@
+#!/bin/bash
+# Output colors
+NORMAL="\\033[0;39m"
+RED="\\033[1;31m"
+BLUE="\\033[1;34m"
+
+start_services() {
+  docker-compose up ${*:1}
+}
+
+start() {
+  docker-compose up $1 ${*:2}
+}
+
+start_worker() {
+  docker-compose run --rm $1 ./start_worker.sh
+}
