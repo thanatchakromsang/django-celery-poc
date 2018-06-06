@@ -1,6 +1,5 @@
 from rest_framework.response import Response
 from rest_framework.views import APIView
-from django.shortcuts import redirect
 
 from tasks.tasks import create_random_word
 
