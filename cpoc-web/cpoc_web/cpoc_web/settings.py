@@ -35,14 +35,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'celery',
     'cpoc_web',
     'cpoc_web.views',
+    'tasks',
 ]
 
 THIRD_PARTY_APPS = [
     'rest_framework',
     'django_celery_beat',
+    'celery',
 ]
 
 INSTALLED_APPS += THIRD_PARTY_APPS
@@ -82,9 +83,10 @@ WSGI_APPLICATION = 'cpoc_web.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'postgres',
         'USER': 'postgres',
+        'PASSWORD': 'postgres',
         'HOST': 'db',
         'PORT': '5432',
     }
@@ -132,9 +134,8 @@ STATIC_URL = '/static/'
 STATIC_ROOT = '/static/'
 
 # CELERY STUFF
-BROKER_URL = 'redis://redis:6379/0'
-CELERY_BROKER_URL = 'redis://redis:6379/0'
-CELERY_RESULT_BACKEND = 'redis://redis:6379/0'
+CELERY_BROKER_URL = 'redis://redis:6379'
+CELERY_RESULT_BACKEND = 'redis://redis:6379'
 CELERY_ACCEPT_CONTENT = ['application/json']
 CELERY_TASK_SERIALIZER = 'json'
 CELERY_RESULT_SERIALIZER = 'json'

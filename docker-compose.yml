@@ -8,14 +8,16 @@ services:
     - "8000:8000"
     links:
       - redis
+      - db
     depends_on:
+      - redis
       - db
     volumes:
       - ./cpoc-web:/app
     command: bash -c "chmod +x entrypoint.sh && ./entrypoint.sh"
 
   db:
-    image: postgres
+    image: postgres:latest
     ports:
       - "5432:5432"
 
@@ -23,15 +25,17 @@ services:
     image: "redis:alpine"
     ports:
       - "6379:6379"
+    volumes:
+      - 'redisdata:/data'
 
   celery:
     build:
       context: cpoc-web/
       dockerfile: Dockerfile.worker
     command: bash -c "chmod +x entrypoint-worker.sh && ./entrypoint-worker.sh"
-    links:
-      - db
-      - redis
+    depends_on:
+      - web
 
-
+volumes:
+  redisdata:
 
