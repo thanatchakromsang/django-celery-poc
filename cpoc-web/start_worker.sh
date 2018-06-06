@@ -1,4 +1,4 @@
 #!/usr/bin/env bash
 
 cd cpoc_web
-celery -A cpoc_web worker -l info
+celery -A cpoc_web worker -l info -B --scheduler django_celery_beat.schedulers:DatabaseScheduler
