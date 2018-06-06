@@ -8,10 +8,14 @@ app = Celery('cpoc_web')
 app.config_from_object('django.conf:settings', namespace='CELERY')
 app.autodiscover_tasks()
 
-app.conf.task_default_queue = 'queue_a'
+# app.conf.task_default_queue = 'queue_a'
 app.conf.task_routes = {
-    'tasks.tasks.create_random_word': {'queue': 'queue_a'},
-    'tasks.tasks.create_random_word_long': {'queue': 'queue_b'},
+    'tasks.tasks.create_random_word': {
+        'queue': 'queue_a'
+    },
+    'tasks.tasks.create_random_word_long': {
+        'queue': 'queue_b'
+    },
 }
 
 
