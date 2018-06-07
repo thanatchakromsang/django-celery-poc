@@ -3,3 +3,4 @@ djangorestframework==3.8
 Celery==4.1.1
 redis==2.10.5
 django_celery_beat==1.1.1
+ipdb

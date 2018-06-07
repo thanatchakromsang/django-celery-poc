@@ -34,26 +34,29 @@ services:
       dockerfile: Dockerfile.worker
     environment:
       - WORKER_QUEUE=queue_a
+      - WORKER_NAME=worker_A
     command: bash -c "chmod +x entrypoint-worker.sh && ./entrypoint-worker.sh"
     depends_on:
       - web
 
-  queuq-b:
+  queue-b:
     build:
       context: cpoc-web/
       dockerfile: Dockerfile.worker
     environment:
       - WORKER_QUEUE=queue_b
+      - WORKER_NAME=worker_B
     command: bash -c "chmod +x entrypoint-worker.sh && ./entrypoint-worker.sh"
     depends_on:
       - web
 
-  queuq-c:
+  queue-c:
     build:
       context: cpoc-web/
       dockerfile: Dockerfile.worker
     environment:
       - WORKER_QUEUE=queue_c
+      - WORKER_NAME=worker_C
     command: bash -c "chmod +x entrypoint-worker.sh && ./entrypoint-worker.sh"
     depends_on:
       - web
