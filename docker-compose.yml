@@ -61,12 +61,18 @@ services:
     depends_on:
       - web
 
+  scheduler:
+    build:
+      context: cpoc-web/
+      dockerfile: Dockerfile.worker
+    command: bash -c "chmod +x entrypoint-beat.sh && ./entrypoint-beat.sh"
+    depends_on:
+      - web
+
   queue-monitor:
     image: mher/flower
     command: flower --basic_auth=${QUEUE_MONITOR_USERNAME}:${QUEUE_MONITOR_PASSWORD} --address=0.0.0.0 --port=5555 --broker=redis://redis:6379
     ports:
       - '5555:5555'
-
 volumes:
   redisdata:
-
